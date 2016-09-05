@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -78,6 +79,7 @@ public class DKIMChecker {
 									}
 								});
 								exs.shutdown();
+								exs.awaitTermination(1, TimeUnit.DAYS);
 								SwingUtilities.invokeLater(new Runnable() {
 									public void run() {
 										JOptionPane.showMessageDialog(window, "Scan finished.");
