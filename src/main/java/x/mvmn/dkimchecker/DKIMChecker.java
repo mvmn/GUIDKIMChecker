@@ -59,6 +59,7 @@ public class DKIMChecker {
 				jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				if (JFileChooser.APPROVE_OPTION == jfc.showOpenDialog(window)) {
 					btnScan.setEnabled(false);
+					txaLog.append("Scanning folder " + jfc.getSelectedFile().getAbsolutePath() + "...\n");
 					new Thread() {
 						public void run() {
 							try {
@@ -93,6 +94,7 @@ public class DKIMChecker {
 								SwingUtilities.invokeLater(new Runnable() {
 									public void run() {
 										btnScan.setEnabled(true);
+										txaLog.append("Scan finished.\n");
 									}
 								});
 							}
